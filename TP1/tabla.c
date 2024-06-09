@@ -25,6 +25,8 @@ void mostrarConFormato(float nudos, float kmh)
 
 void mostrarTabla(float inicio, float fin, float incremento)
 {
+    assert(inicio >= 0 && incremento > 0);
+    assert(fin >= inicio + incremento);
     int i;
     float nudos, kmh;
     int cantidad_filas = cantidadFilas(inicio, fin, incremento);
