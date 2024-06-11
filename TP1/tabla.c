@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <assert.h>
 #include "tabla.h"
 #include "conversion.h"
 
@@ -25,7 +26,8 @@ void mostrarConFormato(float nudos, float kmh)
 
 void mostrarTabla(float inicio, float fin, float incremento)
 {
-    assert(inicio >= 0 && incremento > 0);
+    assert(inicio >= 0);
+    assert(incremento > 0);
     assert(fin >= inicio + incremento);
     int i;
     float nudos, kmh;
