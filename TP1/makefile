@@ -1,7 +1,7 @@
 CC = gcc
 DEBUG_CFLAGS = -g
 RELEASE_CFLAGS = -O2 -DNDEBUG
-CFLAGS = -Wall -c -pedantic-errors -std=c23
+CFLAGS = -Wall -c -std=c23 -pedantic-errors 
 
 # por defecto uso 
 ifndef BUILD_TYPE
@@ -15,29 +15,23 @@ else ifeq ($(BUILD_TYPE),release)
     CFLAGS += $(RELEASE_CFLAGS)
 endif
 
-#indica que objetivos deben realizarse si o si, sin importar las dependencias
+#indica qué objetivos deben realizarse sí o sí, sin importar las dependencias
 .PHONY: clean run
 
 exec: main.o tabla.o conversion.o
-	$(CC) main.o tabla.o conversion.o -o exec.exe
+	$(CC) main.o tabla.o conversion.o -o exec
 
 main.o: main.c tabla.h conversion.h
-	$(CC) $(CFLAGS) main.c -o main.o
+	$(CC) $(CFLAGS) -o main.o main.c
 
-#$<: es el primer item en la lista de dependencias, en nuestro caso el mate.c
-#$@: nombre del objetivo	
 tabla.o: tabla.c tabla.h conversion.h
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -o tabla.o tabla.c
 
 conversion.o: conversion.c conversion.h
-	$(CC) $(CFLAGS) $< -o $@
-
-#info adicional	
-#$^: Esta variable representa todas las dependencias de la regla de compilación.
+	$(CC) $(CFLAGS) -o conversion.o conversion.c
 
 clean:
-	rm main.o tabla.o conversion.o exec.exe
+	rm -f main.o tabla.o conversion.o exec
 
 run: exec
-	./exec.exe
-
+	./exec
