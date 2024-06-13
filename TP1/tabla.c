@@ -6,7 +6,14 @@
 
 int cantidadFilas(float inicio, float fin, float incremento)
 {
-    return round((fin - inicio) / incremento);
+    int filas = 0;
+
+    while (inicio <= fin)
+    {
+        filas++;
+        inicio += incremento;
+    }
+    return filas;
 }
 
 void mostrarInicio()
