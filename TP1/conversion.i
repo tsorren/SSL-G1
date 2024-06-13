@@ -1,3 +1,4 @@
+// Archivo conversion.c ya preprocesado
 # 0 "conversion.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
