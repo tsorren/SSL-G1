@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <assert.h>
 #include "tabla.h"
 #include "conversion.h"
