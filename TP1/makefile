@@ -19,19 +19,19 @@ endif
 .PHONY: clean run
 
 exec: main.o tabla.o conversion.o
-	$(CC) main.o tabla.o conversion.o -o exec
+	$(CC) $^ -o $@
 
 main.o: main.c tabla.h conversion.h
-	$(CC) $(CFLAGS) -o main.o main.c
+	$(CC) $(CFLAGS) $< -o $@
 
 tabla.o: tabla.c tabla.h conversion.h
-	$(CC) $(CFLAGS) -o tabla.o tabla.c
+	$(CC) $(CFLAGS) $< -o $@
 
 conversion.o: conversion.c conversion.h
-	$(CC) $(CFLAGS) -o conversion.o conversion.c
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f main.o tabla.o conversion.o exec
+	rm -f *.o exec
 
 run: exec
-	./exec
+	./exec $(ARG1) $(ARG2) $(ARG3)
